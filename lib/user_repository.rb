@@ -33,6 +33,12 @@ class UserRepository
         user.username = record['username']
         user.email = record['email']
         return user
+    end
 
+    def create(user)
+        sql = 'INSERT INTO users (email, username) VALUES($1, $2);'
+        sql_params = [user.email, user.username]
+
+        DatabaseConnection.exec_params(sql, sql_params)
     end
 end

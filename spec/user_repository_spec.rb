@@ -34,4 +34,19 @@ RSpec.describe UserRepository do
         user = repo.find(1)
         expect(user.username).to eq('username1')
     end
+
+
+    it 'creates a new user' do
+        repo = UserRepository.new
+
+        new_user = User.new
+        new_user.email = 'email500@email.com'
+        new_user.username = 'Username500'
+
+        repo.create(new_user)
+
+        all_users = repo.all
+        
+        expect(all_users).to include(have_attributes(email: 'email500@email.com', username: 'Username500'))
+    end
 end

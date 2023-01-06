@@ -37,4 +37,20 @@ RSpec.describe PostRepository do
         post = repo.find(1)
         expect(post.content).to eq('mycontent')
     end
+
+    it 'creates a new post' do
+        repo = PostRepository.new
+
+        new_post = Post.new
+        new_post.title = 'Hello world'
+        new_post.content = 'This is my content'
+        new_post.views = '1'
+        new_post.user_id = '1'
+
+        repo.create(new_post)
+
+        all_posts = repo.all
+        
+        expect(all_posts).to include(have_attributes(title: 'Hello world', content: 'This is my content'))
+    end
 end
