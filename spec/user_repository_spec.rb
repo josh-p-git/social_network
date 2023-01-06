@@ -49,4 +49,12 @@ RSpec.describe UserRepository do
         
         expect(all_users).to include(have_attributes(email: 'email500@email.com', username: 'Username500'))
     end
+
+    it 'deletes a user by id' do
+        repo = UserRepository.new
+        repo.delete(1)
+        users = repo.all
+
+        expect(users.length).to eq(1)
+    end
 end

@@ -53,4 +53,12 @@ RSpec.describe PostRepository do
         
         expect(all_posts).to include(have_attributes(title: 'Hello world', content: 'This is my content'))
     end
+
+    it 'deletes a post by id' do
+        repo = PostRepository.new
+        repo.delete(1)
+        posts = repo.all
+
+        expect(posts.length).to eq(1)
+    end
 end

@@ -26,6 +26,11 @@ new_entry.create(new_user)
 
 # ----------------------------
 
+# detleting a post entry by id 
+
+puser_repository.delete(1) 
+
+# ----------------------------
 
 user_repository.all.each do |user|
     p user

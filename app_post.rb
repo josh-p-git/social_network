@@ -27,6 +27,13 @@ new_entry.create(new_post)
 
 # ----------------------------
 
+# detleting a post entry by id 
+
+post_repository.delete(1) 
+
+
+# ----------------------------
+
 post_repository.all.each do |post|
     p post
   end
