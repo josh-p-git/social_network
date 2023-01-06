@@ -9,3 +9,6 @@ user_repository = UserRepository.new
 user_repository.all.each do |user|
   p user
 end
+
+user = user_repository.find(1)
+puts "#{user.id} -  #{user.email} - #{user.username}"

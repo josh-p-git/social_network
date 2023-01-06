@@ -20,4 +20,22 @@ class PostRepository
 
         return posts
     end
+
+    def find(id)
+        sql = 'SELECT id, title, content, views FROM posts WHERE user_id = $1;'
+        sql_params = [id]
+
+        result_set = DatabaseConnection.exec_params(sql, sql_params)
+
+        record = result_set[0]
+
+        post = Post.new
+        post.id = record['id']
+        post.title = record['title']
+        post.content = record['content']
+        post.views = record['views']
+        post.user_id = record['user_id']
+
+        return post
+    end
 end

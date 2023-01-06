@@ -23,4 +23,18 @@ RSpec.describe PostRepository do
         expect(posts.first.views).to eq('3')
         expect(posts.first.user_id).to eq('1')
     end
+
+    it 'returns firstpost as a single result' do
+        repo = PostRepository.new
+
+        post = repo.find(1)
+        expect(post.title).to eq('firstpost')
+    end
+
+    it 'returns mycontent as a single result' do
+        repo = PostRepository.new
+
+        post = repo.find(1)
+        expect(post.content).to eq('mycontent')
+    end
 end

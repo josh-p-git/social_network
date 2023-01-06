@@ -20,4 +20,18 @@ RSpec.describe UserRepository do
         expect(users.first.id).to eq('1')
         expect(users.first.username).to eq('username1')
     end
+
+    it 'returns email@email.com as a single result' do
+        repo = UserRepository.new
+
+        user = repo.find(1)
+        expect(user.email).to eq('email@email.com')
+    end
+
+    it 'returns username1 as a single result' do
+        repo = UserRepository.new
+
+        user = repo.find(1)
+        expect(user.username).to eq('username1')
+    end
 end
